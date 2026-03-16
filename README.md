@@ -51,7 +51,7 @@ Development of open-source software is hard, especially when we all have day job
 
 ## Philosophy
 
-I am a human, and I make software for other humans. Despite having a copilot.md file, not a drop of this code is AI generated, and I'd like to keep it that way. Hand-writing code keeps me sharp, and it helps to ensure that code is actually functional, and not just plausible. LLM-generated pull requests will be rejected and the offending contributor will be banned. Feel free to use AI to help you understand the code and architecture, but please write the code yourself if you're looking to contribute
+I am a human, and I make software for other humans. I'm not against using AI in development, and I think it can be a powerful work accelerator. But for this project, I have chosen to write all of the code by hand. Despite having a copilot.md file, not a drop of this code is AI generated, and I'd like to keep it that way. Hand-writing code keeps me sharp, and it helps to ensure that some of the trickier code in this project is actually functional, and not just plausible. LLM-generated pull requests will be rejected. Feel free to use AI to help you understand the code and architecture, but please write the code yourself if you're looking to contribute
 
 ## Contributing
 
