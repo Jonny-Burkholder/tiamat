@@ -20,7 +20,7 @@ func main() {
 	var quiet bool
 
 	// Parse global flags before subcommand
-	globalFlags := flag.NewFlagSet("swarm", flag.ExitOnError)
+	globalFlags := flag.NewFlagSet("locust", flag.ExitOnError)
 	globalFlags.BoolVar(&verbose, "verbose", false, "Enable verbose output")
 	globalFlags.BoolVar(&verbose, "v", false, "Enable verbose output (short)")
 	globalFlags.BoolVar(&quiet, "quiet", false, "Suppress all output except errors")
