@@ -1,6 +1,6 @@
-package swarm
+package consume
 
-import "github.com/jonny-burkholder/swarm/internal/models"
+import "github.com/jonny-burkholder/tiamat/internal/models"
 
 type thresholdType int
 
@@ -10,13 +10,14 @@ const (
 	TypeErrRate                         // run until a certain number of errors are reached for a sliding time window
 )
 
-func New() Swarm {
-	return Swarm{
+func New() Dragon {
+	return Dragon{
 		threshold: threshold{},
 	}
 }
 
-type Swarm struct {
+// Dragon consumes the API's resources
+type Dragon struct {
 	models.Config
 	threshold
 }

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/jonny-burkholder/swarm/internal/logger"
+	"github.com/jonny-burkholder/tiamat/internal/logger"
 )
 
 type BenchmarkCommand struct {

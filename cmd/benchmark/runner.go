@@ -3,7 +3,7 @@ package benchmark
 import (
 	"context"
 
-	"github.com/jonny-burkholder/swarm/internal/models"
+	"github.com/jonny-burkholder/tiamat/internal/models"
 )
 
 type Runner interface {

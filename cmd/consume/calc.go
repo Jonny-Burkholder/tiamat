@@ -1,4 +1,4 @@
-package swarm
+package consume
 
 // calc is for functions that calculate how a swarm swells.
 // For instance, you may want to scale linearly to get a

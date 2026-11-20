@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"sync"
 
-	"github.com/jonny-burkholder/swarm/internal/models"
+	"github.com/jonny-burkholder/tiamat/internal/models"
 )
 
 type defaultRunner struct {

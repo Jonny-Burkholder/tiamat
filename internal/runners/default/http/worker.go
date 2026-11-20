@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/jonny-burkholder/swarm/internal/models"
+	"github.com/jonny-burkholder/tiamat/internal/models"
 )
 
 // TODO: add context for cancel

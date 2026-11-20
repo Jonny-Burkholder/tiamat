@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/jonny-burkholder/swarm/cmd/benchmark"
-	"github.com/jonny-burkholder/swarm/cmd/compare"
+	"github.com/jonny-burkholder/tiamat/cmd/benchmark"
+	"github.com/jonny-burkholder/tiamat/cmd/compare"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 	var quiet bool
 
 	// Parse global flags before subcommand
-	globalFlags := flag.NewFlagSet("locust", flag.ExitOnError)
+	globalFlags := flag.NewFlagSet("tiamat", flag.ExitOnError)
 	globalFlags.BoolVar(&verbose, "verbose", false, "Enable verbose output")
 	globalFlags.BoolVar(&verbose, "v", false, "Enable verbose output (short)")
 	globalFlags.BoolVar(&quiet, "quiet", false, "Suppress all output except errors")
@@ -108,10 +108,10 @@ func runCompare(args []string, verbose, quiet bool) error {
 }
 
 func printUsage() {
-	fmt.Println("swarm - The ultimate API testing and benchmarking tool")
+	fmt.Println("tiamat - The ultimate API chaos tool")
 	fmt.Println()
 	fmt.Println("Usage:")
-	fmt.Println("  swarm <command> [flags] [args]")
+	fmt.Println("  tiamat <command> [flags] [args]")
 	fmt.Println()
 	fmt.Println("Available Commands:")
 	fmt.Println("  benchmark, bench    Run API benchmarks")
@@ -123,9 +123,9 @@ func printUsage() {
 	fmt.Println("  -v, --verbose      Enable verbose output")
 	fmt.Println("  -q, --quiet        Suppress all output except errors")
 	fmt.Println()
-	fmt.Println("Use 'swarm <command> --help' for more information about a command.")
+	fmt.Println("Use 'tiamat <command> --help' for more information about a command.")
 }
 
 func printVersion() {
-	fmt.Println("swarm version 0.1.0")
+	fmt.Println("tiamat version 0.1.0")
 }
