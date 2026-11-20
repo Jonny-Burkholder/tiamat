@@ -1,3 +1,4 @@
+version: "2"
 linters:
   default: standard
   enable: 
@@ -8,7 +9,7 @@ linters:
     - dupl
     - err113
     - exhaustive
-    - exhaustruct
+    - exhaustruct_v5
     - exptostd
     - funlen
     - gochecknoglobals
@@ -39,6 +40,6 @@ linters:
     - sloglint
     - staticcheck
     - unconvert
-  setting:
+  settings:
     funlen:
       lines: 150
