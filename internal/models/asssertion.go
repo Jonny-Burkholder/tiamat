@@ -27,6 +27,7 @@ func Operator(op operator) string {
 		// case opGreaterThan:
 		// 	return ">"
 	}
+
 	return ""
 }
 
@@ -40,5 +41,6 @@ func (a Assertion) Assert(value any) Assertion {
 	case opNotEqual:
 		a.Result = (value != a.Value)
 	}
+
 	return a
 }

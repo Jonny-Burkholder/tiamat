@@ -3,6 +3,8 @@ package compare
 import (
 	"flag"
 	"fmt"
+
+	errs "github.com/jonny-burkholder/tiamat/internal/errors"
 )
 
 type CompareCommand struct {
@@ -37,7 +39,7 @@ func (c *CompareCommand) Validate() error {
 	}
 
 	if !validFormats[c.Format] {
-		return fmt.Errorf("invalid format '%s', must be one of: html, json, csv", c.Format)
+		return errs.ErrInvalidFormat(c.Format)
 	}
 
 	return nil
@@ -46,11 +48,11 @@ func (c *CompareCommand) Validate() error {
 // Run executes the compare command
 func (c *CompareCommand) Run(args []string) error {
 	if err := c.Validate(); err != nil {
-		return fmt.Errorf("validation failed: %w", err)
+		return errs.ErrValidationFailed(err)
 	}
 
 	if len(args) < 2 {
-		return fmt.Errorf("compare requires at least 2 benchmark result files")
+		return ErrNotEnoughResults
 	}
 
 	// TODO: Implement the actual compare logic

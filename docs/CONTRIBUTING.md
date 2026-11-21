@@ -1,4 +1,4 @@
-# SWARM Contributions Guidelines
+# tiamat Contributions Guidelines
 
 So you're interested in contributing? Great! Glad to have you aboard. We want to work together to create a great tool.
 

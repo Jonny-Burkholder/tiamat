@@ -1,3 +1,3 @@
-module github.com/jonny-burkholder/swarm
+module github.com/jonny-burkholder/tiamat
 
-go 1.24.0
+go 1.27

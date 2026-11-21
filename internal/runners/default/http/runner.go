@@ -1,5 +1,7 @@
 /*
-	defaulthttp is the default runner and is what will be used
+Package defaulthttp
+
+defaulthttp is the default runner and is what will be used
 
 if no runner is specified
 */
@@ -10,7 +12,7 @@ import (
 	"net/url"
 	"sync"
 
-	"github.com/jonny-burkholder/swarm/internal/models"
+	"github.com/jonny-burkholder/tiamat/internal/models"
 )
 
 type defaultRunner struct {
@@ -77,7 +79,8 @@ func (runner *defaultRunner) Run(collections []models.Collection) error {
 				id++      // increment id
 				wg.Done() // decrement wait group
 			case <-doneChan:
-				close(nextChan)  // this might cause deadlock
+				close(nextChan) // this might cause deadlock
+
 				break selectloop // using a label to shut the linter up
 			}
 		}

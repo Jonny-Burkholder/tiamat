@@ -2,10 +2,11 @@ package defaulthttp
 
 import (
 	"bytes"
+	"context"
 	"net/http"
 	"net/url"
 
-	"github.com/jonny-burkholder/swarm/internal/models"
+	"github.com/jonny-burkholder/tiamat/internal/models"
 )
 
 // TODO: add context for cancel
@@ -88,6 +89,9 @@ func (w syncWorker) run() {
 		close(w.requestChan)
 	}()
 
+	// TODO: deadline from config
+	ctx := context.Background()
+
 	for requests := range w.requestChan {
 		results := make([]models.Result, len(requests))
 		for i, request := range requests {
@@ -100,25 +104,31 @@ func (w syncWorker) run() {
 			if err != nil {
 				result.Error = err
 				results[i] = result
+
 				continue
 			}
+
 			// add the query params to the url
 			reqUrl.RawQuery = url.Values(request.QueryParams).Encode()
 
 			// prepare the http request
-			req, err := http.NewRequest(request.Method, reqUrl.String(), bytes.NewBuffer(request.Body))
+			req, err := http.NewRequestWithContext(ctx, request.Method, reqUrl.String(), bytes.NewBuffer(request.Body))
 			if err != nil {
 				result.Error = err
 				results[i] = result
+
 				continue
 			}
+
 			for k, v := range request.Headers {
 				// use Set() for idempotence
 				req.Header.Set(k, v)
 			}
+
 			if err = request.Auth.Authenticate(req); err != nil {
 				result.Error = err
 				results[i] = result
+
 				continue
 			}
 
@@ -127,8 +137,10 @@ func (w syncWorker) run() {
 			if err != nil {
 				result.Error = err
 				results[i] = result
+
 				continue
 			}
+
 			// populate the result
 			result.StatusCode = res.StatusCode
 			b := []byte{}
@@ -136,6 +148,7 @@ func (w syncWorker) run() {
 			if err != nil {
 				result.Error = err
 			}
+
 			result.Body = b
 			// call any assertions
 			// TODO: implement this. Right now we're not doing anything with the response body
@@ -143,6 +156,7 @@ func (w syncWorker) run() {
 			// add the result to the results slice
 			results[i] = result
 		}
+
 		// return the results to the resultchan
 		w.resultChan <- results
 		w.nextChan <- w.requestChan

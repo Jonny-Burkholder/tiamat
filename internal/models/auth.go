@@ -48,5 +48,6 @@ func (a *DefaultAuth) Authenticate(req *http.Request) error {
 	default:
 		return fmt.Errorf("unknown authentication kind: %s", a.kind())
 	}
+
 	return nil
 }

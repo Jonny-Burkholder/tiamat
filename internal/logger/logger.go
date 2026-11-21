@@ -12,9 +12,10 @@ const (
 	LevelInfo
 	LevelWarn
 	LevelError
-	LevelSilent
 )
 
+// This interface + defaultLogger is a code smell for sure - if
+// nothing else, we should break the interface into a separate file
 type Logger interface {
 	Debug(string, ...any)
 	Info(string, ...any)

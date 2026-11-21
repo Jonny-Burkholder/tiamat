@@ -11,12 +11,12 @@ type CollectionError string
 
 func (e CollectionError) Error() string {
 	msg := e
-	return fmt.Sprintf("SWARM encountered a problem with collection #%s", msg)
+	return fmt.Sprintf("tiamat encountered a problem with collection #%s", msg)
 }
 
 type RunError int
 
 func (e RunError) Error() string {
 	id := e
-	return fmt.Sprintf("SWARM encountered a problem with run #%d", id)
+	return fmt.Sprintf("tiamat encountered a problem with run #%d", id)
 }
