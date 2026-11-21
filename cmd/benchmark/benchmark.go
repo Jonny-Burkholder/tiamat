@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"time"
 
+	errs "github.com/jonny-burkholder/tiamat/internal/errors"
 	"github.com/jonny-burkholder/tiamat/internal/logger"
 )
 
@@ -74,15 +75,15 @@ func (b *BenchmarkCommand) SetupFlags(fs *flag.FlagSet) {
 // Validate checks that the provided flags are valid
 func (b *BenchmarkCommand) Validate() error {
 	if b.Collection == "" {
-		return fmt.Errorf("collection file is required (use -c or --collection)")
+		return errs.ErrCollectionFileRequired
 	}
 
 	if b.Runs <= 0 && b.Duration <= 0 {
-		return fmt.Errorf("either --runs or --duration must be specified and greater than 0")
+		return errs.ErrRunsOrDurationRequired
 	}
 
 	if b.Concurrent <= 0 {
-		return fmt.Errorf("concurrent workers must be greater than 0")
+		return errs.ErrConcurrentWorkers
 	}
 
 	validLogLevels := map[string]bool{
@@ -93,7 +94,7 @@ func (b *BenchmarkCommand) Validate() error {
 	}
 
 	if !validLogLevels[b.LogLevel] {
-		return fmt.Errorf("invalid log level '%s', must be one of: debug, info, warn, error", b.LogLevel)
+		return errs.ErrInvalidLogLevel(b.LogLevel)
 	}
 
 	return nil

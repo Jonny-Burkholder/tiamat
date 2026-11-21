@@ -25,7 +25,6 @@ linters:
     - ireturn
     - lll
     - misspell
-    - mnd
     - modernize
     - nestif
     - nilnesserr

@@ -1,0 +1,3 @@
+# gRPC
+
+This is going to be a pain to implement (but fun!) - we'll probably need to go:generate proto files based on request definitions... hmmm...
